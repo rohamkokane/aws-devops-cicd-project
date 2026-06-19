@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Fetching code'
+                echo 'Source code checked'
             }
         }
 
@@ -15,11 +15,16 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                echo 'Testing application'
+            }
+        }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying application'
             }
         }
-
     }
 }
