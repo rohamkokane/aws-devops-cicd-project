@@ -5,13 +5,21 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t devops-cicd-app ./app'
+                dir('app') {
+                    sh 'docker build -t devops-cicd-app .'
+                }
             }
         }
 
-        stage('Verify Image') {
+        stage('Tag Image') {
             steps {
-                sh 'docker images'
+                sh 'docker tag devops-cicd-app kokaneroham@gmail.com/devops-cicd-app:latest'
+            }
+        }
+
+        stage('Push Image') {
+            steps {
+                sh 'docker push kokaneroham@gmail.com/devops-cicd-app:latest'
             }
         }
     }
