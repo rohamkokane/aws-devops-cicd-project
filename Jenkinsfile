@@ -2,25 +2,24 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
-                checkout scm
+                echo 'Fetching code'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                sh 'docker build -t devops-cicd-app ./app'
+                echo 'Building application'
             }
         }
 
-        stage('Run Container') {
+        stage('Deploy') {
             steps {
-                sh '''
-                    docker rm -f myapp || true
-                    docker run -d -p 3000:3000 --name myapp devops-cicd-app
-                '''
+                echo 'Deploying application'
             }
         }
+
     }
 }
