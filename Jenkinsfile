@@ -2,10 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+
+        stage('Checkout') {
             steps {
-                echo 'Build successful'
+                echo 'Fetching code...'
             }
         }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t devops-cicd-app ./app'
+            }
+        }
+
     }
 }
