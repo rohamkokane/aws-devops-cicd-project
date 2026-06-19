@@ -13,13 +13,13 @@ pipeline {
 
         stage('Tag Image') {
             steps {
-                sh 'docker tag devops-cicd-app kokaneroham@gmail.com/devops-cicd-app:latest'
+                sh 'docker tag devops-cicd-app roham123/devops-cicd-app:latest'
             }
         }
 
         stage('Push Image') {
             steps {
-                sh 'docker push kokaneroham@gmail.com/devops-cicd-app:latest'
+                sh 'docker push roham123/devops-cicd-app:latest'
             }
         }
     }
