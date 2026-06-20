@@ -2,6 +2,24 @@ pipeline {
     agent any
 
     stages {
+        
+        
+        
+        stage('Generate Build Info') {
+            steps {
+            sh '''echo "BUILD_NUMBER=${BUILD_NUMBER}" > app/build-info.txt
+            echo "BUILD_TIME=$(date)" >> app/build-info.txt'''
+            }
+        }
+
+
+        stage('Generate Build Info') {
+            steps {
+                sh """echo 'BUILD_NUMBER=${BUILD_NUMBER}' > app/build-info.txt
+                echo 'BUILD_TIME=$(date)' >> app/build-info.txt"""
+            }
+        }
+
 
         stage('Build Docker Image') {
             steps {

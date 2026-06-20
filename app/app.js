@@ -2,6 +2,16 @@ const express = require("express");
 
 const app = express();
 
+const fs = require("fs");
+
+let buildInfo = "Build information unavailable";
+
+try {
+buildInfo = fs.readFileSync("build-info.txt", "utf8");
+} catch (err) {
+console.log("No build info found");
+}
+
 app.get("/", (req, res) => {
   const deployTime = new Date().toLocaleString();
 
@@ -101,6 +111,11 @@ app.get("/", (req, res) => {
           <p><strong>Last Request Time:</strong> ${deployTime}</p>
           <p><strong>Version:</strong> v1.1</p>
         </div>
+
+        <div class="footer">
+        <pre>${buildInfo}</pre>
+        </div>
+
 
       </div>
     </body>
