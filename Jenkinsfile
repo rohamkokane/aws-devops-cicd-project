@@ -13,13 +13,26 @@ pipeline {
 
         stage('Tag Image') {
             steps {
-                sh 'docker tag devops-cicd-app roham123/devops-cicd-app:latest'
+                sh 'docker tag devops-cicd-app roham132/devops-cicd-app:latest'
             }
         }
 
         stage('Push Image') {
             steps {
-                sh 'docker push roham123/devops-cicd-app:latest'
+                sh 'docker push roham132/devops-cicd-app:latest'
+            }
+        }
+
+        stage('Deploy to EC2') {
+            steps {
+                sh '''
+                ssh -o StrictHostKeyChecking=no ec2-user@52.66.203.37 "
+                docker pull roham132/devops-cicd-app:latest &&
+                docker stop myapp || true &&
+                docker rm myapp || true &&
+                docker run -d -p 3000:3000 --name myapp roham132/devops-cicd-app:latest
+                "
+                '''
             }
         }
     }
