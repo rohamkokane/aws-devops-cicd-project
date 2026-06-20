@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh '''
                 echo BUILD_NUMBER=$BUILD_NUMBER > app/build-info.txt
-                echo BUILD_TIME=$(date) >> app/build-info.txt'''
+                echo BUILD_TIME="$(TZ=Asia/Kolkata date '+%d-%b-%Y %I:%M:%S %p IST')" >> app/build-info.txt'''
             }
         }
 
