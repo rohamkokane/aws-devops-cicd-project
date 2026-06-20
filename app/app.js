@@ -99,7 +99,7 @@ app.get("/", (req, res) => {
         <div class="footer">
           <p><strong>Deployment Status:</strong> Successful</p>
           <p><strong>Last Request Time:</strong> ${deployTime}</p>
-          <p><strong>Version:</strong> v1.1</p>
+          <p><strong>Version:</strong> v1.2</p>
         </div>
 
       </div>
