@@ -86,7 +86,7 @@ app.get("/", (req, res) => {
 
         <h1>🚀 AWS DevOps CI/CD Pipeline</h1>
 
-        <h2>Built by Roham Kokane</h2>
+        <h2>Built by prem thakare</h2>
 
         <p class="status">
           ✅ Application Running Successfully on AWS EC2

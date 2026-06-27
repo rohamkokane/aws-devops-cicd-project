@@ -38,7 +38,7 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 sh '''
-                ssh -o StrictHostKeyChecking=no ec2-user@52.66.203.37 "
+                ssh -o StrictHostKeyChecking=no ec2-user@3.110.195.43 "
                 docker pull roham132/devops-cicd-app:latest &&
                 docker stop myapp || true &&
                 docker rm myapp || true &&
